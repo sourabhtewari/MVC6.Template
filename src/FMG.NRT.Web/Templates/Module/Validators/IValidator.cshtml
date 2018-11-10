@@ -1,0 +1,12 @@
+﻿@model ModuleModel
+using FMG.NRT.Objects;
+using System;
+
+namespace FMG.NRT.Validators
+{
+    public interface @Model.IValidator : IValidator
+    {
+        Boolean CanCreate(@Model.View view);
+        Boolean CanEdit(@Model.View view);
+    }
+}

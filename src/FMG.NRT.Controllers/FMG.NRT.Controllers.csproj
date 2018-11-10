@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <GenerateFullPaths>true</GenerateFullPaths>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DebugType Condition="'$(Configuration)'=='Debug'">portable</DebugType>
+    <DebugSymbols Condition="'$(Configuration)'=='Debug'">true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FMG.NRT\FMG.NRT.csproj" />
+    <ProjectReference Include="..\FMG.NRT.Services\FMG.NRT.Services.csproj" />
+    <ProjectReference Include="..\FMG.NRT.Validators\FMG.NRT.Validators.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.1.3" />
+  </ItemGroup>
+
+</Project>

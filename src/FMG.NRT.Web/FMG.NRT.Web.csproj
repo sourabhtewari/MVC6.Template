@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <OutputType>Exe</OutputType>
+    <GenerateFullPaths>true</GenerateFullPaths>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DebugType Condition="'$(Configuration)'=='Debug'">portable</DebugType>
+    <DebugSymbols Condition="'$(Configuration)'=='Debug'">true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Logs\**" />
+
+    <Content Include="mvc.sitemap" CopyToPublishDirectory="Always" />
+
+    <Content Update="Templates\**" CopyToPublishDirectory="Never" />
+    <Content Update="bundleconfig.json" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot\Content\**" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot\Scripts\**" CopyToPublishDirectory="Never" />
+    <Content Update="compilerconfig.json" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot\Content\**\*.woff" CopyToPublishDirectory="Always" />
+    <Content Update="wwwroot\Content\Public\**" CopyToPublishDirectory="Always" />
+    <Content Update="wwwroot\Scripts\Public\**" CopyToPublishDirectory="Always" />
+    <Content Update="wwwroot\Content\Private\**" CopyToPublishDirectory="Always" />
+    <Content Update="wwwroot\Scripts\Private\**" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FMG.NRT.Controllers\FMG.NRT.Controllers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Genny" Version="2.1.0" />
+    <PackageReference Include="Humanizer.Core" Version="2.5.1" />
+    <PackageReference Include="NonFactors.Grid.Mvc6" Version="3.1.0" />
+    <PackageReference Include="NonFactors.Lookup.Mvc6" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.1.2" />
+  </ItemGroup>
+
+  <Target Name="PostcompileScript" AfterTargets="Build">
+    <Exec Command="dotnet bundle" />
+  </Target>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Genny" Version="2.1.0" />
+    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.8.391" />
+  </ItemGroup>
+
+</Project>
